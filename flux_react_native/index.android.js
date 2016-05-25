@@ -1,8 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -14,31 +9,39 @@ import {
   View,
 } from 'react-native';
 
-import LoginScene from './components/login_scene'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+import LoginSceneContainer from './containers/login_container'
+import todoApp from './reducers/index'
+
+let store = createStore( todoApp )
 
 class FluxNative extends Component {
   render() {
     return (
-      <Navigator
-        initialRoute={{ name: 'Login', index: 0}}
-        renderScene={ (route, navigator) => {
-          if (route.name === 'Login') {
-            return this.renderLogin(navigator);
-          } else {
-            return (
-              <View style={styles.container}>
-                <Text>Second Page</Text>
-              </View>
-            );
-          }
-        }}
-      />
+      <Provider store={store}>
+        <Navigator
+          initialRoute={{ name: 'Login', index: 0}}
+          renderScene={ (route, navigator) => {
+            if (route.name === 'Login') {
+              return this.renderLogin(navigator);
+            } else {
+              return (
+                <View style={styles.container}>
+                  <Text>Second Page</Text>
+                </View>
+              );
+            }
+          }}
+        />
+      </Provider>
     );
   }
 
   renderLogin(navigator) {
     return (
-      <LoginScene
+      <LoginSceneContainer
         onLogin={ () => {
           navigator.push( {
             name: 'Main',

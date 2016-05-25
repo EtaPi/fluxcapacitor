@@ -12,12 +12,16 @@ import {
 export default class LoginScene extends Component {
   constructor(props) {
     super(props);
+    console.log( this.props.state );
     Object.assign( this.props, props );
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <Text>
+        { this.props.state.session.status }
+        </Text>
         <Text style={styles.h3}>
           Username
         </Text>
@@ -26,17 +30,13 @@ export default class LoginScene extends Component {
           PIN
         </Text>
         <TextInput style={styles.input} />
-        <TouchableHighlight onPress={this._onLogin.bind(this)}
+        <TouchableHighlight onPress={ () => { this.props.onLogin( 'user', 'pw' ) } }
                             activeOpacity={0.95}
                             underlayColor='#9999AA'>
           <Text style={styles.h3}>Login</Text>
         </TouchableHighlight>
       </View>
     );
-  }
-
-  _onLogin() {
-    this.props.onLogin();
   }
 }
 
