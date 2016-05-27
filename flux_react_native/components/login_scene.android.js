@@ -20,7 +20,9 @@ export default class LoginScene extends Component {
     return (
       <View style={styles.container}>
         <Text>
-        { this.props.state.session.status }
+        { this.props.state.session.status === 'authenticated'
+          ? this.props.state.session.body
+          : this.props.state.session.status }
         </Text>
         <Text style={styles.h3}>
           Username

@@ -9,13 +9,19 @@ import {
   View,
 } from 'react-native';
 
-import { createStore } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
 import LoginSceneContainer from './containers/login_container'
 import todoApp from './reducers/index'
 
-let store = createStore( todoApp )
+let store = createStore(
+  todoApp,
+  applyMiddleware(
+    thunkMiddleware
+  )
+);
 
 class FluxNative extends Component {
   render() {
