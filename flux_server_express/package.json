@@ -5,9 +5,16 @@
   "description": "Server for the flux capacitor app written using express.",
   "main": "index.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "mongodb": "^2.1.21",
+    "mongoose": "^4.5.0"
+  },
+  "devDependencies": {
+    "mongodb": "^2.1.21",
+    "mongoose": "^4.4.20"
   }
 }
