@@ -40,6 +40,9 @@ To start the web server:
 docker run -d -p 8080:8080 --name app node-app
 ```
 
+The `-d` tells docker to run the container in the background. To attach to a
+terminal, use `-it`.
+
 Data in Mongo:
   Need this in `peoples` collections:
 ```
